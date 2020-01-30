@@ -1,7 +1,4 @@
 ﻿using ProjectEuler.ProjectEulerSolutions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace ProjectEuler.UnitTests
@@ -19,28 +16,28 @@ namespace ProjectEuler.UnitTests
         public void CheckIf_13_isPrime()
         {
             var isPrime = eulerProblem003.IsPrime(13);
-            Assert.Equal(true, isPrime);
+            Assert.True(isPrime);
         }
 
         [Fact]
         public void CheckIf_166_isPrime()
         {
             var isPrime = eulerProblem003.IsPrime(166);
-            Assert.Equal(false, isPrime);
+            Assert.False(isPrime);
         }
 
         [Fact]
         public void CheckIf_673_isPrime()
         {
             var isPrime = eulerProblem003.IsPrime(673);
-            Assert.Equal(true, isPrime);
+            Assert.True(isPrime);
         }
 
         [Fact]
         public void CheckIf_997_isPrime()
         {
             var isPrime = eulerProblem003.IsPrime(997);
-            Assert.Equal(true, isPrime);
+            Assert.True(isPrime);
         }
 
         [Fact]
