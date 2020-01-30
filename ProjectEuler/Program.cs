@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectEuler.ProjectEulerSolutions;
+using System;
 
 namespace ProjectEuler
 {
@@ -6,7 +7,12 @@ namespace ProjectEuler
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int test = 1234;
+            string test2 = test.ToString();
+
+            Console.WriteLine(test2[1]);
+
+            
         }
     }
 }
