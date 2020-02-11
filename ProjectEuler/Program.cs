@@ -8,9 +8,9 @@ namespace ProjectEuler
         static void Main(string[] args)
         {
 
-            EulerProblem011 euler = new EulerProblem011();
 
-            Console.WriteLine(euler.FindLargestProduct());
+
+            Console.WriteLine((int)Math.Sqrt(3));
 
     
 
