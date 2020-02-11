@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProjectEuler.ProjectEulerSolutions
+﻿namespace ProjectEuler.ProjectEulerSolutions
 {
     class EulerProblem011
     {
 
+        private const int adjacentNumCount = 4;
         private int[,] grid2D = new int[20, 20]
         {
             { 8, 2,22,97,38,15, 0,40, 0,75, 4, 5, 7,78,52,12,50,77,91, 8},
@@ -28,27 +25,81 @@ namespace ProjectEuler.ProjectEulerSolutions
             { 4,42,16,73,38,25,39,11,24,94,72,18, 8,46,29,32,40,62,76,36},
             {20,69,36,41,72,30,23,88,34,62,99,69,82,67,59,85,74, 4,36,16},
             {20,73,35,29,78,31,90, 1,74,31,49,71,48,86,81,16,23,57, 5,54},
-            { 1,70,54,71,83,51,54,69,16,92,33,48,61,43,52, 1,89,19,67,48}
+            { 1,70,54,71,83,51,54,69,16,92,33,48,61,43,52, 1,89,19,67,48},
         };
 
-        public void FindLargestProduct()
+
+        public long FindLargestProduct()
         {
             long largestProduct = 0;
-            long computeLargestProduct = 0;
             for(int i = 0; i < grid2D.GetLength(0); i++)
             {
                 for(int j = 0; j < grid2D.GetLength(1); j++)
                 {
+               
                     //compute right product
-                    if(j + 4 <= grid2D.GetLength(1))
+                    if (j + adjacentNumCount <= grid2D.GetLength(1))
                     {
-                        if(grid2D.GetValue(i,j) + grid2D.GetValue(i,j+1) + grid2D.GetValue(i, j) + grid2D.GetValue(i, j) > largestProduct)
+                        long rightProduct = 1;
+                        for (int k = 0; k < adjacentNumCount; k++)
                         {
-
+                            rightProduct *= grid2D[i, j + k];
+                        }
+                        
+                        if (rightProduct > largestProduct)
+                        {
+                            largestProduct = rightProduct;
                         }
                     }
+
+                    //compute down product
+                    if(i + adjacentNumCount <= grid2D.GetLength(0))
+                    {
+                        long downProduct = 1;
+                       
+                        for (int k = 0; k < adjacentNumCount; k++)
+                        {
+                            downProduct *= grid2D[i + k, j];
+                        }
+                        if (downProduct > largestProduct)
+                        {
+                            largestProduct = downProduct;
+                        }
+                    } 
+                  
+                    //compute right diagonal product
+                    if(i + adjacentNumCount <= grid2D.GetLength(0) && j + adjacentNumCount <= grid2D.GetLength(1))
+                    {
+                        long rightDiagonalProduct = 1;
+                        for (int k = 0; k < adjacentNumCount; k++)
+                        {
+                            rightDiagonalProduct *= grid2D[i + k, j + k];
+                        }
+                        if (rightDiagonalProduct > largestProduct)
+                        {
+                            largestProduct = rightDiagonalProduct;
+                        }
+                    }
+
+                    //compute left diagonal product
+                    if(i + adjacentNumCount <= grid2D.GetLength(0) && j - adjacentNumCount >= 0)
+                    {
+                        long leftDiagonalProduct = 1;
+
+                        for (int k = 0; k < adjacentNumCount; k++)
+                        {
+                            leftDiagonalProduct *= grid2D[i + k, j - k];
+                        }
+                        if (leftDiagonalProduct > largestProduct)
+                        {
+                            largestProduct = leftDiagonalProduct;
+                        }
+                    }
+                    
+                   
                 }
             }
+            return largestProduct;
         }
         
     }
