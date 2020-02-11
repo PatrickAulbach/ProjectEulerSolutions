@@ -10,7 +10,9 @@ namespace ProjectEuler
 
 
 
-            Console.WriteLine((int)Math.Sqrt(3));
+            EulerProblem013 euler = new EulerProblem013();
+
+            
 
     
 
