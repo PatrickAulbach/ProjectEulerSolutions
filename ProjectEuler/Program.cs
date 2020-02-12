@@ -10,9 +10,9 @@ namespace ProjectEuler
 
 
 
-            EulerProblem013 euler = new EulerProblem013();
+            EulerProblem016 euler = new EulerProblem016();
 
-            
+            Console.WriteLine(euler.PowerDigitSum(2, 15));
 
     
 
